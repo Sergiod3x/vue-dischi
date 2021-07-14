@@ -1,5 +1,11 @@
 <template>
-    <div>{{albums.genre}} </div>
+
+    <div>{{albums.poster}} 
+   {{albums.author}} 
+   {{albums.genre}} 
+   {{albums.year}} 
+  </div>
+
     
 </template>
 
