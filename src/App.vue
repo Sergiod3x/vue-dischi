@@ -1,9 +1,9 @@
 <template>
   <div id="app">
     <Loader v-if="!(albums.success)"/>
-    <button @click="searchAlbum(filteredArray)">Saluta</button>
-    <Nav  @search="salutami"/>
-    <Main :albums="albums.response"/>
+    <button @click="searchAlbum(filteredArray)">Filtra</button>
+    <Nav  @search="searchAlbum"/>
+    <Main :albums="filteredArray"/>
 
   </div>
 </template>
@@ -30,21 +30,28 @@ export default {
   created(){
     axios.get("https://flynn.boolean.careers/exercises/api/array/music").then((result)=> {
       this.albums = result.data
-      this.filteredArray = result.data
+      this.filteredArray = result.data.response
     })
   },
   methods:{
     salutami(mex){
       alert(mex); 
     },
-    // searchAlbum(albumString){
-    //   this.filteredArray = this.albums.response.filter((element)=>{
-    //     return element.title.includes("albumString");
-    //   })
+    searchAlbum(albumString){
+      this.filteredArray = this.albums.response.filter((element)=>{
+        // console.log("stringa"+albumString);
+        // console.log(element);
+        // console.log("anno" +element.year);
+        // console.log("return" +element.year.includes("albumString"));
+        if ((element.year.includes(albumString))||(element.genre.includes(albumString))||(element.author.includes(albumString))||(element.title.includes(albumString))){
+          return true
+        }
+        false
+      })
 
        
 
-    // }
+    }
   }
 }
 </script>
