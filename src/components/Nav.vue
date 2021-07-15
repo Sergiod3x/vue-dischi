@@ -1,10 +1,21 @@
 <template>
-    <div>Nav</div>
+    <div>
+    
+       <input type="text" placeholder="Search" v-model="searchString"
+       @keyup.enter="$emit('search', searchString)"/>
+       
+    </div>
 </template>
 
 <script>
 export default{
-   name : "Nav" 
+   name : "Nav",
+   data() {
+       return{
+           searchString : ""
+       }
+
+   }
 }
 </script>
 

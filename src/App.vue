@@ -2,8 +2,8 @@
   <div id="app">
     <Loader v-if="!(albums.success)"/>
     <button @click="searchAlbum(filteredArray)">Saluta</button>
-    <Nav  @search="serchAlbum"/>
-    <Main :albums="filteredArray"/>
+    <Nav  @search="salutami"/>
+    <Main :albums="albums.response"/>
 
   </div>
 </template>
@@ -37,14 +37,14 @@ export default {
     salutami(mex){
       alert(mex); 
     },
-    searchAlbum(albumString){
-      this.filteredArray = this.albums.response.filter((element)=>{
-        return element.title.includes("albumString");
-      })
+    // searchAlbum(albumString){
+    //   this.filteredArray = this.albums.response.filter((element)=>{
+    //     return element.title.includes("albumString");
+    //   })
 
        
 
-    }
+    // }
   }
 }
 </script>
